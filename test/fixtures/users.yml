@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: root
+  password: toor
+  name: root
+  birthdate: 2011-09-30
+  type: User
+
+two:
+  username: h4evr
+  password: qwerty123
+  name: Diogo Costa
+  birthdate: 1989-08-27
+  male: true
+  address: 'Rua 9 de Abril'
+  type: Patient
+
+three:
+  username: nuno
+  password: silva
+  name: Nuno Silva
+  birthdate: 1989-06-30
+  photo: 'default.png'
+  type: 'Doctor'
+
