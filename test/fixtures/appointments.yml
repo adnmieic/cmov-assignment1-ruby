@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2011-10-02 23:17:11
+  duration: 1
+  patient: 
+  doctor: 
+
+two:
+  date: 2011-10-02 23:17:11
+  duration: 1
+  patient: 
+  doctor: 

@@ -1,0 +1,2 @@
+module SchedulePlansHelper
+end
