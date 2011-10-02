@@ -1,4 +1,9 @@
 CmovAssignment1Ruby::Application.routes.draw do
+  resources :users
+  resources :appointments
+  resources :specialties
+  resources :schedule_plans
+  resources :schedules
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
