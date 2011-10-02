@@ -1,0 +1,27 @@
+<h1>Listing schedule_plans</h1>
+
+<table>
+  <tr>
+    <th>Start</th>
+    <th>End</th>
+    <th>Doctor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @schedule_plans.each do |schedule_plan| %>
+  <tr>
+    <td><%= schedule_plan.start %></td>
+    <td><%= schedule_plan.end %></td>
+    <td><%= schedule_plan.doctor %></td>
+    <td><%= link_to 'Show', schedule_plan %></td>
+    <td><%= link_to 'Edit', edit_schedule_plan_path(schedule_plan) %></td>
+    <td><%= link_to 'Destroy', schedule_plan, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Schedule plan', new_schedule_plan_path %>
