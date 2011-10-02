@@ -2,6 +2,8 @@
 
 one:
   name: Oncologia
+  clinic: clinic_feup
 
 two:
   name: Pediatria
+  clinic: clinic_feup
