@@ -1,19 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
-one:
-  username: MyString
-  password: MyString
-  name: MyString
+user_root:
+  id: 1
+  username: root
+  passwordhash: 2925de7221bfc19b31a4d7c78d03707f4b5ddbbc6f3a125dc1d3cd1f2eda1e7b
+  salt: 12345
+  name: Root
   birthdate: 2011-10-02
-  photo: MyString
-  address: MyString
-  male: false
-
-two:
-  username: MyString
-  password: MyString
-  name: MyString
-  birthdate: 2011-10-02
-  photo: MyString
-  address: MyString
-  male: false
+  photo: 
+  address: 
+  male: true

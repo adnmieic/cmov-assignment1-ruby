@@ -54,15 +54,10 @@ ActiveRecord::Schema.define(:version => 20111002224121) do
 
   add_index "schedules", ["schedule_plan_id"], :name => "index_schedules_on_schedule_plan_id"
 
-  create_table "specialties", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "passwordhash"
+    t.string   "salt"
     t.string   "name"
     t.date     "birthdate"
     t.string   "photo"
