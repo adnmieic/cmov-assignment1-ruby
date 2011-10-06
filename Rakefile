@@ -5,4 +5,4 @@
 require 'rake/dsl_definition'
 require File.expand_path('../config/application', __FILE__)
 
-Blog::Application.load_tasks
+CmovAssignment1Ruby::Application.load_tasks
