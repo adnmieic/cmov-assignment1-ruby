@@ -9,7 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :photo
       t.string :address
       t.boolean :male
-
+	  t.string :type
+	  
       t.timestamps
     end
   end

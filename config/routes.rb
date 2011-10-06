@@ -1,5 +1,7 @@
 CmovAssignment1Ruby::Application.routes.draw do
   resources :users
+  resources :doctors
+  resources :patients
   resources :appointments
   resources :specialties
   resources :schedule_plans
