@@ -5,6 +5,8 @@
     <th>Username</th>
     <th>Name</th>
     <th>Birthdate</th>
+    <th>Address</th>
+    <th>Male</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +17,8 @@
     <td><%= patient.username %></td>
     <td><%= patient.name %></td>
     <td><%= patient.birthdate %></td>
+    <td><%= patient.address %></td>
+    <td><%= patient.male %></td>
     <td><%= link_to 'Show', patient %></td>
     <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
     <td><%= link_to 'Destroy', patient, confirm: 'Are you sure?', method: :delete %></td>
