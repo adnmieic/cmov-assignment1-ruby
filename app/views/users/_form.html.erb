@@ -24,6 +24,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.date_select :birthdate %>
+  </div>
+  <div class="field">
     <%= f.hidden_field :type %>
   </div>
   <div class="actions">
