@@ -25,6 +25,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/new.json
   def new
     @doctor = Doctor.new
+    @specialties = Specialty.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/1/edit
   def edit
     @doctor = Doctor.find(params[:id])
+    @specialties = Specialty.all
   end
 
   # POST /doctors

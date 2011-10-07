@@ -20,5 +20,14 @@
   <%= @doctor.photo %>
 </p>
 
+<p>
+  <b>Specialties:</b>
+  <% @doctor.specialties.each do |specialty| %>
+    <p>
+      <%= specialty.name %>
+    </p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>
