@@ -20,9 +20,15 @@ doctor1 = Doctor.create(:username => 'nuno',
 						:password => '123',
 						:password_confirmation => '123',
 						:name => 'Nuno Silva',
-						:male => true,
 						:photo => nil)
 						
 Specialty.create(:name => 'Psicologia Clinica')
 Specialty.create(:name => 'Pediatria')
 
+patient1 = Patient.create(:username => 'andre',
+						:password => '123',
+						:password_confirmation => '123',
+						:name => 'Andre Fernandes',
+            :birthdate => '1980-09-06',
+            :address => 'Porto',
+						:male => true)
