@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>String</th>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,7 +10,7 @@
 
 <% @specialties.each do |specialty| %>
   <tr>
-    <td><%= specialty.string %></td>
+    <td><%= specialty.name%></td>
     <td><%= link_to 'Show', specialty %></td>
     <td><%= link_to 'Edit', edit_specialty_path(specialty) %></td>
     <td><%= link_to 'Destroy', specialty, confirm: 'Are you sure?', method: :delete %></td>
