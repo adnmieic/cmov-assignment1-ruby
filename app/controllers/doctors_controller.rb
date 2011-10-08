@@ -25,7 +25,6 @@ class DoctorsController < ApplicationController
   # GET /doctors/new.json
   def new
     @doctor = Doctor.new
-    @specialties = Specialty.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +35,6 @@ class DoctorsController < ApplicationController
   # GET /doctors/1/edit
   def edit
     @doctor = Doctor.find(params[:id])
-    @specialties = Specialty.all
   end
 
   # POST /doctors
@@ -46,6 +44,7 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.save
+        update_specialties
         format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
         format.json { render json: @doctor, status: :created, location: @doctor }
       else
@@ -62,6 +61,7 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
+        update_specialties
         format.html { redirect_to @doctor, notice: 'Doctor was successfully updated.' }
         format.json { head :ok }
       else
@@ -81,5 +81,14 @@ class DoctorsController < ApplicationController
       format.html { redirect_to doctors_url }
       format.json { head :ok }
     end
+  end
+
+  protected
+  def update_specialties
+    @doctor.specialties.clear
+    params[:specialty_ids].each do |id|
+      @doctor.specialties.push(Specialty.find(id))
+    end
+    @doctor.save
   end
 end

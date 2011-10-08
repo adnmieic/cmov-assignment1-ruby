@@ -36,8 +36,15 @@
   </div>
   
   <div class="field">
-    <%= f.label :specialties %><br />
-TODO!
+    <%= f.label :specialties =%><br />
+    <% for specialty in Specialty.all %>
+      <% if @doctor.specialties.include?(specialty) %>
+        <%= check_box_tag 'specialty_ids[]', specialty.id, true  =%>
+      <% else %>
+        <%= check_box_tag 'specialty_ids[]', specialty.id, false =%>
+      <% end %>
+      <%= label_tag specialty.name %><br />
+    <% end %>
   </div>
 
   <div class="actions">
