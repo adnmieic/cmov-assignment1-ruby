@@ -22,11 +22,11 @@
 
 <p>
   <b>Specialties:</b>
+  <ul>
   <% @doctor.specialties.each do |specialty| %>
-    <p>
-      <%= specialty.name %>
-    </p>
+    <li><%= link_to specialty.name, specialty_path(specialty) %> </li>
   <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |

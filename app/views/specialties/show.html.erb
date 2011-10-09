@@ -1,10 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>String:</b>
+  <b>Name:</b>
   <%= @specialty.name %>
 </p>
 
+<p>
+  <b>Doctors:</b>
+  <ul>
+    <% for doctor in @specialty.doctors %>
+      <li><%= doctor.name =%></li>
+    <% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_specialty_path(@specialty) %> |
 <%= link_to 'Back', specialties_path %>
