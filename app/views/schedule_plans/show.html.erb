@@ -12,9 +12,30 @@
 
 <p>
   <b>Doctor:</b>
-  <%= @schedule_plan.doctor %>
+  <%= link_to @schedule_plan.doctor.name, doctor_path(@schedule_plan.doctor) %>
 </p>
 
+<p>
+  <b>Schedules:</b>
+    <% if not @schedule_plan.schedules.empty? %>
+  <table>
+    <tr>
+      <th>Weekday</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Schedule</th>
+    </tr>
+        <% @schedule_plan.schedules.each do |schedule| %>
+    <tr>
+      <td><%= schedule.weekday %></td>
+      <td><%= schedule.start %></td>
+      <td><%= schedule.end %></td>
+      <td><%= link_to schedule.id, schedule_path(schedule) %></td>
+    </tr>
+        <% end %>
+      <% end %>
+  </table>
+</p>
 
 <%= link_to 'Edit', edit_schedule_plan_path(@schedule_plan) %> |
 <%= link_to 'Back', schedule_plans_path %>

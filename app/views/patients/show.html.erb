@@ -25,5 +25,25 @@
   <%= @patient.male %>
 </p>
 
+<% if not @patient.appointments.empty? %>
+<p>
+  <b>Appointments:</b>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Duration</th>
+      <th>Doctor</th>
+    </tr>
+    <% @patient.appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.date %></td>
+      <td><%= appointment.duration %></td>
+      <td><%= link_to appointment.doctor.name, doctor_path(appointment.doctor) %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

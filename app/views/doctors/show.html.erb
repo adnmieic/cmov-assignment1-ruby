@@ -25,30 +25,59 @@
   </ul>
 </p>
 
-<% if not @doctor.schedule_plans.empty? %>
 <p>
-  <b>Schedule Plan:</b>
+  <b>Appointments:</b>
+  <% if not @doctor.appointments.empty? %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Duration</th>
+      <th>Patient</th>
+    </tr>
+    <% @doctor.appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.date %></td>
+      <td><%= appointment.duration %></td>
+      <td><%= link_to appointment.patient.name, patient_path(appointment.patient) %></td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+</p>
+
+<p>
+  <b>Schedule Plans:</b>
+  <% if not @doctor.schedule_plans.empty? %>
+    <% @doctor.schedule_plans.each do |schedule_plan| %>
+
   <ul>
-    <li>Start:<%= @doctor.schedule_plans.start %></li>
-    <li>End:<%= @doctor.schedule_plans.end %></li>
+    <li>Id: <%= link_to schedule_plan.id, schedule_plan_path(schedule_plan) %></li>
+    <li>Start: <%= schedule_plan.start %></li>
+    <li>End: <%= schedule_plan.end %></li>
   </ul>
 
+    <% if not schedule_plan.schedules.empty? %>
   <table>
     <tr>
       <th>Weekday</th>
       <th>Start</th>
       <th>End</th>
+      <th>Schedule</th>
     </tr>
-    <% @doctor.schedule_plans.schedule.each do |schedule| %>
+        <% schedule_plan.schedules.each do |schedule| %>
     <tr>
       <td><%= schedule.weekday %></td>
       <td><%= schedule.start %></td>
       <td><%= schedule.end %></td>
+      <td><%= link_to schedule.id, schedule_path(schedule) %></td>
     </tr>
-    <% end %>
+        <% end %>
+      <% end %>
   </table>
+
+    <% end %>
+  <% end %>
 </p>
-<% end %>
 
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>

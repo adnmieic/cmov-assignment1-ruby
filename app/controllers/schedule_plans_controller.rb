@@ -41,6 +41,7 @@ class SchedulePlansController < ApplicationController
   # POST /schedule_plans.json
   def create
     @schedule_plan = SchedulePlan.new(params[:schedule_plan])
+    set_doctor
 
     respond_to do |format|
       if @schedule_plan.save
@@ -57,6 +58,7 @@ class SchedulePlansController < ApplicationController
   # PUT /schedule_plans/1.json
   def update
     @schedule_plan = SchedulePlan.find(params[:id])
+    set_doctor
 
     respond_to do |format|
       if @schedule_plan.update_attributes(params[:schedule_plan])
@@ -79,5 +81,11 @@ class SchedulePlansController < ApplicationController
       format.html { redirect_to schedule_plans_url }
       format.json { head :ok }
     end
+  end
+
+  protected
+
+  def set_doctor
+    @schedule_plan.doctor = Doctor.find(params[:doctor_id])
   end
 end

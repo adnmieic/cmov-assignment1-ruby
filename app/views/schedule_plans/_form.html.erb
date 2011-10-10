@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :doctor %><br />
-    <%= f.text_field :doctor %>
+    <%= select_tag 'doctor_id', options_from_collection_for_select(Doctor.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

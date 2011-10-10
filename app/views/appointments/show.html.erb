@@ -12,12 +12,12 @@
 
 <p>
   <b>Patient:</b>
-  <%= @appointment.patient.name %>
+  <%= link_to @appointment.patient.name, patient_path(@appointment.patient) %>
 </p>
 
 <p>
   <b>Doctor:</b>
-  <%= @appointment.doctor.name %>
+  <%= link_to @appointment.doctor.name, doctor_path(@appointment.doctor) %>
 </p>
 
 

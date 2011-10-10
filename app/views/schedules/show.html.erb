@@ -17,7 +17,7 @@
 
 <p>
   <b>Schedule plan:</b>
-  <%= @schedule.schedule_plan %>
+  <%= link_to @schedule.schedule_plan.id, schedule_plan_path(@schedule.schedule_plan) %>
 </p>
 
 

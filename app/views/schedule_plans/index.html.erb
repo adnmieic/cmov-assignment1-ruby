@@ -14,7 +14,7 @@
   <tr>
     <td><%= schedule_plan.start %></td>
     <td><%= schedule_plan.end %></td>
-    <td><%= schedule_plan.doctor %></td>
+    <td><%= schedule_plan.doctor.name %></td>
     <td><%= link_to 'Show', schedule_plan %></td>
     <td><%= link_to 'Edit', edit_schedule_plan_path(schedule_plan) %></td>
     <td><%= link_to 'Destroy', schedule_plan, confirm: 'Are you sure?', method: :delete %></td>
