@@ -13,6 +13,17 @@ class User < ActiveRecord::Base
     self.passwordhash == self.class.hash_password(password, self.salt)
   end
 
+  def as_json(options = {})
+    options = { :only => [:username, :name, :birthdate] }
+    if self.type == 'Doctor'
+      options[:only].push(:photo)
+    elsif self.type == 'Patient'
+      options[:only].push(:address)
+      options[:only].push(:male)
+    end
+    super(options)
+  end
+
   private
 
   def self.hash_password(password, salt)
