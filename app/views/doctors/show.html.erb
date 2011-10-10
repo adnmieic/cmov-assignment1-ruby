@@ -7,11 +7,7 @@
 
 <p>
   <b>Name:</b>
-  <%= @doctor.name %>
-</p>
-
-<p>
-  <b>Birthdate:</b>
+  <%= @doctor.name %> </p> <p> <b>Birthdate:</b>
   <%= @doctor.birthdate %>
 </p>
 
@@ -28,6 +24,31 @@
   <% end %>
   </ul>
 </p>
+
+<% if not @doctor.schedule_plans.empty? %>
+<p>
+  <b>Schedule Plan:</b>
+  <ul>
+    <li>Start:<%= @doctor.schedule_plans.start %></li>
+    <li>End:<%= @doctor.schedule_plans.end %></li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>Weekday</th>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+    <% @doctor.schedule_plans.schedule.each do |schedule| %>
+    <tr>
+      <td><%= schedule.weekday %></td>
+      <td><%= schedule.start %></td>
+      <td><%= schedule.end %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
 <%= link_to 'Back', doctors_path %>
