@@ -44,6 +44,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
+        set_doctor_patient
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render json: @appointment, status: :created, location: @appointment }
       else
@@ -60,6 +61,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.update_attributes(params[:appointment])
+        set_doctor_patient
         format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
         format.json { head :ok }
       else
@@ -80,4 +82,16 @@ class AppointmentsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  protected
+  def set_doctor_patient 
+    doctor = Doctor.find(params[:doctor_id])
+    patient = Patient.find(params[:patient_id])
+    if doctor and patient
+      @appointment.doctor = doctor
+      @appointment.patient = patient
+      @appointment.save
+    end
+  end
+
 end

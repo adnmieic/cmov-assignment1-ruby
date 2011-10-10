@@ -15,8 +15,8 @@
   <tr>
     <td><%= appointment.date %></td>
     <td><%= appointment.duration %></td>
-    <td><%= appointment.patient %></td>
-    <td><%= appointment.doctor %></td>
+    <td><%= appointment.patient.name %></td>
+    <td><%= appointment.doctor.name %></td>
     <td><%= link_to 'Show', appointment %></td>
     <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
     <td><%= link_to 'Destroy', appointment, confirm: 'Are you sure?', method: :delete %></td>
