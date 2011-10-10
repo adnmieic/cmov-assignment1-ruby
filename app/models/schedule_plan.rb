@@ -3,7 +3,7 @@ class SchedulePlan < ActiveRecord::Base
   has_many :schedules
   
   def as_json(options = {})
-    options = { :only => [:start, :end] }
+    options = { :only => [:id, :start, :end] }
     super(options)
   end
 end
