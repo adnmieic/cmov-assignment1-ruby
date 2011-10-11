@@ -16,14 +16,25 @@ root = User.create(:id => 1,
                    :male => true,
                    :type => 'User')
 
+specialty1 = Specialty.create(:name => 'Psicologia Clinica')
+specialty2 = Specialty.create(:name => 'Pediatria')
+
 doctor1 = Doctor.create(:username => 'nuno',
 						:password => '123',
 						:password_confirmation => '123',
 						:name => 'Nuno Silva',
 						:photo => nil)
 						
-Specialty.create(:name => 'Psicologia Clinica')
-Specialty.create(:name => 'Pediatria')
+doctor1.specialties.push(specialty1)
+doctor1.specialties.push(specialty2)
+
+doctor2 = Doctor.create(:username => 'diogo',
+						:password => '123',
+						:password_confirmation => '123',
+						:name => 'Diogo Costa',
+						:photo => nil)
+
+doctor2.specialties.push(specialty1)
 
 patient1 = Patient.create(:username => 'andre',
 						:password => '123',
@@ -32,3 +43,18 @@ patient1 = Patient.create(:username => 'andre',
             :birthdate => '1980-09-06',
             :address => 'Porto',
 						:male => true)
+
+appointment1 = Appointment.new
+appointment1.date = '2011-10-10 20:30:00'
+appointment1.duration = 30
+appointment1.doctor = doctor1
+appointment1.patient = patient1
+appointment1.save
+
+appointment2 = Appointment.new
+appointment2.date = '2011-10-10 20:30:00'
+appointment2.duration = 30
+appointment2.doctor = doctor2
+appointment2.patient = patient1
+appointment2.save
+
