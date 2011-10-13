@@ -1,3 +1,4 @@
+# encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,6 +6,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+clinic = ClinicInfo.create(:id => 1,
+                           :name => "Medical Clinic",
+                           :lat => 41.160244, 
+                           :lon => -8.628296,
+                           :email => "admin@medicalclinic.com",
+                           :phone => "228 349 350",
+                           :address => "Av. de França 352, 4050-276 Porto, Portugal")
 
 root = User.create(:id => 1, 
                    :username => 'root', 

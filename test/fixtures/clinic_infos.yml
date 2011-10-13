@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  address: MyString
+  lat: 1.5
+  lon: 1.5
+  email: MyString
+  phone: MyString
+
+two:
+  name: MyString
+  address: MyString
+  lat: 1.5
+  lon: 1.5
+  email: MyString
+  phone: MyString

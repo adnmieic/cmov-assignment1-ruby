@@ -1,4 +1,6 @@
 CmovAssignment1Ruby::Application.routes.draw do
+  resources :clinic_infos
+
   resources :users
   resources :doctors
   resources :patients

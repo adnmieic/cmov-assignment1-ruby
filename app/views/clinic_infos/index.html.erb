@@ -1,0 +1,33 @@
+<h1>Listing clinic_infos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Lat</th>
+    <th>Lon</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clinic_infos.each do |clinic_info| %>
+  <tr>
+    <td><%= clinic_info.name %></td>
+    <td><%= clinic_info.address %></td>
+    <td><%= clinic_info.lat %></td>
+    <td><%= clinic_info.lon %></td>
+    <td><%= clinic_info.email %></td>
+    <td><%= clinic_info.phone %></td>
+    <td><%= link_to 'Show', clinic_info %></td>
+    <td><%= link_to 'Edit', edit_clinic_info_path(clinic_info) %></td>
+    <td><%= link_to 'Destroy', clinic_info, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clinic info', new_clinic_info_path %>
