@@ -80,4 +80,14 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # GET /users/me
+  def current
+    @user = @current_user
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+
+  end
 end
