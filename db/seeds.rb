@@ -13,7 +13,7 @@ clinic = ClinicInfo.create(:id => 1,
                            :lon => -8.628296,
                            :email => "admin@medicalclinic.com",
                            :phone => "228 349 350",
-                           :address => "Av. de França 352, 4050-276 Porto, Portugal")
+                           :address => "Av. de França 352\n4050-276 Porto\nPortugal")
 
 root = User.create(:id => 1, 
                    :username => 'root', 
