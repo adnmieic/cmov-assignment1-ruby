@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    options = { :only => [:id, :username, :name, :birthdate] }
+    options = { :only => [:id, :username, :name, :birthdate, :type] }
     if self.type == 'Doctor'
       options[:only].push(:photo)
     elsif self.type == 'Patient'
