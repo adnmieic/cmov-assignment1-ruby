@@ -67,3 +67,17 @@ appointment2.doctor = doctor2
 appointment2.patient = patient1
 appointment2.save
 
+schedule_plan1 = SchedulePlan.new
+schedule_plan1.start = '2011-10-15'
+schedule_plan1.end = '2011-10-30'
+schedule_plan1.doctor = doctor1
+schedule_plan1.save
+
+schedule1 = Schedule.new
+schedule1.weekday = 1
+schedule1.start = '10:00'
+schedule1.end = '12:30'
+schedule1.schedule_plan = schedule_plan1
+schedule1.save
+
+
