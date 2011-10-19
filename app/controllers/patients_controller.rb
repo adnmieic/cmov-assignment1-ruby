@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+  skip_before_filter :authenticate, :only => [:create]
+
   # GET /patients
   # GET /patients.json
   def index
