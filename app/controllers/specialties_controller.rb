@@ -80,4 +80,15 @@ class SpecialtiesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+
+
+  def doctors 
+    @specialty = Specialty.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @specialty.doctors }
+    end
+  end
 end

@@ -82,4 +82,14 @@ class PatientsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+
+  def appointments
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @patient.appointments }
+    end
+  end
+  
 end

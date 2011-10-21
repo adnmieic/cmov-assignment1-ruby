@@ -2,13 +2,31 @@ CmovAssignment1Ruby::Application.routes.draw do
   resources :clinic_infos
 
   match 'me' => 'users#current'
+
   resources :users
-  resources :doctors
-  resources :patients
+  
+  resources :doctors do
+    get 'appointments', :on => :member
+    get 'specialties', :on => :member
+    get 'schedule_plans', :on => :member
+  end 
+
+  resources :patients do
+    get 'appointments', :on => :member
+  end
+ 
   resources :appointments
-  resources :specialties
-  resources :schedule_plans
-  resources :schedules
+
+  resources :specialties do
+    get 'doctors', :on => :member
+  end
+
+  resources :schedule_plans do
+    get 'schedules', :on => :member
+  end 
+
+  resources :schedules  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

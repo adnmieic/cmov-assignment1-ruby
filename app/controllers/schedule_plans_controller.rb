@@ -83,6 +83,17 @@ class SchedulePlansController < ApplicationController
     end
   end
 
+
+
+  def schedules
+    @schedule_plan = SchedulePlan.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @schedule_plan.schedules }
+    end
+  end
+
+
+
   protected
 
   def set_doctor
