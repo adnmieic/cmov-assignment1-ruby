@@ -97,6 +97,10 @@ class SchedulePlansController < ApplicationController
   protected
 
   def set_doctor
-    @schedule_plan.doctor = Doctor.find(params[:doctor_id])
+  	@doctor_id = params[:doctor_id];
+  	if @doctor_id == nil
+  		@doctor_id = params[:schedule_plan][:doctor_id];
+  	end
+    @schedule_plan.doctor = Doctor.find(@doctor_id)
   end
 end
