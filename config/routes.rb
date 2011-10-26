@@ -2,6 +2,8 @@ CmovAssignment1Ruby::Application.routes.draw do
   resources :clinic_infos
 
   match 'me' => 'users#current'
+  match '/appointments/patient/:id' => 'appointments#list_patient_appointments', :via => :get
+  match '/appointments/doctor/:id' => 'appointments#list_doctor_appointments', :via => :get
   resources :users
   resources :doctors
   resources :patients
