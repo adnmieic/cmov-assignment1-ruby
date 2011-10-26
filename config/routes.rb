@@ -4,6 +4,7 @@ CmovAssignment1Ruby::Application.routes.draw do
   match 'me' => 'users#current'
 
   resources :users
+  resources :appointments
 
   resources :doctors do
     get 'appointments', :on => :member
