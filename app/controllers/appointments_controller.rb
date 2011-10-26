@@ -83,28 +83,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # GET /appointments/patient/1
-  # GET /appointments/patient/1.json
-  def list_patient_appointments
-    @appointments = Appointment.find(:all, :conditions => [ 'patient_id = ?', params[:id] ]);
-
-    respond_to do |format|
-      format.html { render "index" }
-      format.json { render json: @appointments }
-    end
-  end
-
-  # GET /appointments/patient/1
-  # GET /appointments/patient/1.json
-  def list_doctor_appointments
-    @appointments = Appointment.find(:all, :conditions => [ 'doctor_id = ?', params[:id] ]);
-
-    respond_to do |format|
-      format.html { render "index" }
-      format.json { render json: @appointments }
-    end
-  end
-
   protected
   def set_doctor_patient 
     @appointment.doctor = Doctor.find(params[:doctor_id])

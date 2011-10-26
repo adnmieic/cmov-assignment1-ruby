@@ -83,6 +83,31 @@ class DoctorsController < ApplicationController
     end
   end
 
+
+
+  def appointments
+    @doctor = Doctor.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @doctor.appointments }
+    end
+  end
+
+  def specialties 
+    @doctor = Doctor.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @doctor.specialties }
+    end
+  end
+
+  def schedule_plans
+    @doctor = Doctor.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @doctor.schedule_plans }
+    end
+  end
+
+
+
   protected
   def update_specialties
     @doctor.specialties.clear

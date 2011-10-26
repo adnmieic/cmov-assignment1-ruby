@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+  skip_before_filter :authenticate, :only => [:create]
+
   # GET /patients
   # GET /patients.json
   def index
@@ -80,4 +82,14 @@ class PatientsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+
+  def appointments
+    @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @patient.appointments }
+    end
+  end
+  
 end
