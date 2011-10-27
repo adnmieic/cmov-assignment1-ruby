@@ -17,6 +17,7 @@ CmovAssignment1Ruby::Application.routes.draw do
   end
 
   resources :specialties do
+    get 'listwithdoctors', :on => :collection
     get 'doctors', :on => :member
   end
 

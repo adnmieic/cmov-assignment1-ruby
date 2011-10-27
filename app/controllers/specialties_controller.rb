@@ -81,8 +81,20 @@ class SpecialtiesController < ApplicationController
     end
   end
 
+  # GET /specialties/withdoctors
+  def listwithdoctors
+    @specialties = Specialty.all;
+    @output = [];
+    @specialties.each do |specialty|
+      specialty.doctors.each do |doctor|
+        @output.push([specialty.id, doctor.id]);
+      end
+    end
 
-
+    respond_to do |format|
+      format.json { render json: @output }
+    end
+  end
 
   def doctors 
     @specialty = Specialty.find(params[:id])
