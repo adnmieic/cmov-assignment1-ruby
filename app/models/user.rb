@@ -1,7 +1,7 @@
 require "digest/sha2"
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
   validates_confirmation_of :password, :if => :perform_password_validation?
   validates_presence_of :password, :if => :perform_password_validation?
   validates_presence_of :username
@@ -31,9 +31,11 @@ class User < ActiveRecord::Base
   end
 
   def hash_password
-    if self.password != nil
+    if self.password != nil and self.password_confirmation != nil
       self.salt = ActiveSupport::SecureRandom.base64(8)
       self.passwordhash = self.class.hash_password(self.password, self.salt)
+      self.password = nil
+      self.password_confirmation = nil
     end
   end
 
