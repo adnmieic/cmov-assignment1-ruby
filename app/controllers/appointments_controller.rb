@@ -84,9 +84,17 @@ class AppointmentsController < ApplicationController
   end
 
   protected
-  def set_doctor_patient 
-    @appointment.doctor = Doctor.find(params[:doctor_id])
-    @appointment.patient = Patient.find(params[:patient_id])
+  def set_doctor_patient
+  	@doctor_id = params[:doctor_id]
+  	if @doctor_id == nil
+  		@doctor_id = params[:appointment][:doctor_id]
+  	end
+  	@patient_id = params[:patient_id]
+  	if @patient_id == nil
+  		@patient_id = params[:appointment][:patient_id]
+  	end
+    @appointment.doctor = Doctor.find(@doctor_id)
+    @appointment.patient = Patient.find(@patient_id)
   end
 
 end

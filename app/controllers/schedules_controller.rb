@@ -86,7 +86,11 @@ class SchedulesController < ApplicationController
   protected
 
   def set_schedule_plan
-    @schedule.schedule_plan = SchedulePlan.find(params[:schedule_plan_id])
+    @schedule_plan_id = params[:schedule_plan_id]
+    if @schedule_plan_id == nil
+      @schedule_plan_id = params[:schedule][:schedule_plan_id]
+    end
+    @schedule.schedule_plan = SchedulePlan.find(@schedule_plan_id)
   end
 
 end

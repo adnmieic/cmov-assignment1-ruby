@@ -61,7 +61,7 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.update_attributes(params[:doctor])
-        update_specialties
+		update_specialties
         format.html { redirect_to @doctor, notice: 'Doctor was successfully updated.' }
         format.json { head :ok }
       else
@@ -92,7 +92,7 @@ class DoctorsController < ApplicationController
     end
   end
 
-  def specialties 
+  def specialties
     @doctor = Doctor.find(params[:id])
     respond_to do |format|
       format.json { render json: @doctor.specialties }
@@ -111,7 +111,13 @@ class DoctorsController < ApplicationController
   protected
   def update_specialties
     @doctor.specialties.clear
-    params[:specialty_ids].each do |id|
+    @specialty_ids = params[:specialty_ids]
+    
+    if @specialty_ids == nil
+    	@specialty_ids = params[:doctor][:specialty_ids]
+    end
+    
+    @specialty_ids.each do |id|
       @doctor.specialties.push(Specialty.find(id))
     end
     @doctor.save
