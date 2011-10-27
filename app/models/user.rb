@@ -31,11 +31,21 @@ class User < ActiveRecord::Base
   end
 
   def hash_password
-    self.salt = ActiveSupport::SecureRandom.base64(8)
-    self.passwordhash = self.class.hash_password(self.password, self.salt)
+    if self.password != nil
+      self.salt = ActiveSupport::SecureRandom.base64(8)
+      self.passwordhash = self.class.hash_password(self.password, self.salt)
+    end
   end
 
   def perform_password_validation?
-    self.new_record? ? true : !self.password.blank?
+    if self.new_record?
+      true
+    else
+      if self.password != nil
+        !self.password.blank?
+      else
+        false
+      end
+    end
   end
 end

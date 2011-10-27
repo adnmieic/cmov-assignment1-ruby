@@ -110,16 +110,18 @@ class DoctorsController < ApplicationController
 
   protected
   def update_specialties
-    @doctor.specialties.clear
     @specialty_ids = params[:specialty_ids]
-    
+
     if @specialty_ids == nil
     	@specialty_ids = params[:doctor][:specialty_ids]
     end
-    
-    @specialty_ids.each do |id|
-      @doctor.specialties.push(Specialty.find(id))
+
+    if @specialty_ids
+      @doctor.specialties.clear
+      @specialty_ids.each do |id|
+        @doctor.specialties.push(Specialty.find(id))
+      end
+      @doctor.save
     end
-    @doctor.save
   end
 end
