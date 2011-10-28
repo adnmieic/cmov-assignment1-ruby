@@ -8,16 +8,18 @@ CmovAssignment1Ruby::Application.routes.draw do
   match 'appointments/freeslots/:year/:month/:day' => 'appointments#freeslots', :defaults => { :format => 'json' }
   resources :appointments
 
+  match 'patients/search/:q' => 'patients#search', :defaults => { :format => 'json' }
+
   resources :doctors do
     get 'appointments', :on => :member
     get 'specialties', :on => :member
     get 'schedule_plans', :on => :member
+    get 'future_appointments', :on => :member
   end 
-
-  match 'patients/search/:q' => 'patients#search', :defaults => { :format => 'json' }
 
   resources :patients do
     get 'appointments', :on => :member
+    get 'future_appointments', :on => :member
   end
 
   resources :specialties do

@@ -100,4 +100,10 @@ class PatientsController < ApplicationController
     end
   end
   
+  def future_appointments
+    appointments = Appointment.find(:all, :conditions => ['DATE(date) > ? and patient_id = ?', Time.now, params[:id]])
+    respond_to do |format|
+      format.json { render json: appointments }
+    end
+  end
 end
