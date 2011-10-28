@@ -31,8 +31,7 @@ specialty2 = Specialty.create(:name => 'Pediatria')
 doctor1 = Doctor.create(:username => 'nuno',
 						:password => '123',
 						:password_confirmation => '123',
-						:name => 'Nuno Silva',
-						:photo => nil)
+						:name => 'Nuno Silva')
 						
 doctor1.specialties.push(specialty1)
 doctor1.specialties.push(specialty2)
@@ -40,8 +39,7 @@ doctor1.specialties.push(specialty2)
 doctor2 = Doctor.create(:username => 'diogo',
 						:password => '123',
 						:password_confirmation => '123',
-						:name => 'Diogo Costa',
-						:photo => nil)
+						:name => 'Diogo Costa')
 
 doctor2.specialties.push(specialty1)
 
@@ -49,8 +47,8 @@ patient1 = Patient.create(:username => 'andre',
 						:password => '123',
 						:password_confirmation => '123',
 						:name => 'Andre Fernandes',
-            :birthdate => '1980-09-06',
-            :address => 'Porto',
+                        :birthdate => '1980-09-06',
+                        :address => 'Porto',
 						:male => true)
 
 appointment1 = Appointment.new

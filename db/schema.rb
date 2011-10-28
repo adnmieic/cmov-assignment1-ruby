@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013131424) do
+ActiveRecord::Schema.define(:version => 20111028131500) do
 
   create_table "appointments", :force => true do |t|
     t.datetime "date"
@@ -77,12 +77,15 @@ ActiveRecord::Schema.define(:version => 20111013131424) do
     t.string   "salt"
     t.string   "name"
     t.date     "birthdate"
-    t.string   "photo"
     t.string   "address"
     t.boolean  "male"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.string   "photo_file_size"
+    t.string   "photo_updated_at"
   end
 
 end

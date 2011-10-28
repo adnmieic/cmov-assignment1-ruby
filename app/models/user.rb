@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :if => :perform_password_validation?
   validates_presence_of :username
   validates_uniqueness_of :username
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "64x64" }
 
   before_save :hash_password
 
@@ -21,7 +22,9 @@ class User < ActiveRecord::Base
       options[:only].push(:address)
       options[:only].push(:male)
     end
-    super(options)
+    h = super(options)
+    h['photo'] = self.photo.url{:thumb}
+    h
   end
 
   private

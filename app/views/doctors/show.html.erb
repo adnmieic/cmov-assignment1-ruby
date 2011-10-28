@@ -12,8 +12,8 @@
 </p>
 
 <p>
-  <b>Photo:</b>
-  <%= @doctor.photo %>
+  <b>Photo:</b><br />
+  <%= image_tag @doctor.photo.url{:medium} %>
 </p>
 
 <p>

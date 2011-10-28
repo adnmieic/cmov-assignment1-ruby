@@ -16,7 +16,7 @@
     <td><%= doctor.username %></td>
     <td><%= doctor.name %></td>
     <td><%= doctor.birthdate %></td>
-  	<td><%= doctor.photo %></td>
+  	<td><%= image_tag doctor.photo.url{:thumb}, :size => "32x32" %></td>
     <td><%= link_to 'Show', doctor %></td>
     <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
     <td><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
