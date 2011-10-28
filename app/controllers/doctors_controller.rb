@@ -92,6 +92,13 @@ class DoctorsController < ApplicationController
     end
   end
 
+  def future_appointments
+    appointments = Appointment.find(:all, :conditions => ['DATE(date) > ? and doctor_id = ?', Time.now, params[:id]])
+    respond_to do |format|
+      format.json { render json: appointments }
+    end
+  end
+
   def specialties
     @doctor = Doctor.find(params[:id])
     respond_to do |format|
