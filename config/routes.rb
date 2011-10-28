@@ -12,6 +12,8 @@ CmovAssignment1Ruby::Application.routes.draw do
     get 'schedule_plans', :on => :member
   end 
 
+  match 'patients/search/:q' => 'patients#search', :defaults => { :format => 'json' }
+
   resources :patients do
     get 'appointments', :on => :member
   end

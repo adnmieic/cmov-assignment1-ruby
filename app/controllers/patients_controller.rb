@@ -83,6 +83,15 @@ class PatientsController < ApplicationController
     end
   end
 
+  def search
+    @q = params[:q]
+    @patients = Patient.find(:all, :conditions => ['name LIKE ?', "%#{@q}%"])
+
+    respond_to do |format|
+      format.json { render json: @patients }
+    end
+  end
+
   def appointments
     @appointments = Patient.find(params[:id]).appointments
 
