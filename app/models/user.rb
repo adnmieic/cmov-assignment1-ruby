@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
                     :url => "http://nfsilva.com/adnmieic/:attachment/:id/:style/:filename",
                     :storage => :ftp,
                     :ftp_credentials => { :host => 'ftp.nfsilva.com', :username => 'adnmieic@nfsilva.com', :password => 'mieicadn' },
-                    :ftp_debug_mode => false,
-                    :ftp_passive_mode => false,
+                    :ftp_debug_mode => true,
+                    :ftp_passive_mode => true,
                     :ftp_timeout => 30
 
   before_save :hash_password
