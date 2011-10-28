@@ -44,6 +44,7 @@ specialty15 = Specialty.create(:name => 'Ortopedia')
 doctor1 = Doctor.create(:username => 'nuno',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1988-08-08',
 						:name => 'Nuno Silva')
 doctor1.specialties.push(specialty1)
 doctor1.specialties.push(specialty2)
@@ -51,6 +52,7 @@ doctor1.specialties.push(specialty2)
 doctor2 = Doctor.create(:username => 'diogo',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1988-08-08',
 						:name => 'Diogo Costa')
 doctor2.specialties.push(specialty1)
 doctor2.specialties.push(specialty2)
@@ -58,6 +60,7 @@ doctor2.specialties.push(specialty2)
 doctor3 = Doctor.create(:username => 'andre',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1980-09-06',
 						:name => 'Andre Fernandes')
 doctor3.specialties.push(specialty3)
 doctor3.specialties.push(specialty4)
@@ -65,6 +68,7 @@ doctor3.specialties.push(specialty4)
 doctor4 = Doctor.create(:username => 'rodolfo',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1989-12-25',
 						:name => 'Rodolfo Silva')
 doctor4.specialties.push(specialty5)
 doctor4.specialties.push(specialty6)
@@ -72,6 +76,7 @@ doctor4.specialties.push(specialty6)
 doctor5 = Doctor.create(:username => 'miguel',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1989-12-25',
 						:name => 'Miguel Nabuco')
 doctor5.specialties.push(specialty7)
 doctor5.specialties.push(specialty8)
@@ -79,6 +84,7 @@ doctor5.specialties.push(specialty8)
 doctor6 = Doctor.create(:username => 'francisco',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1999-02-16',
 						:name => 'Francisco Simoes')
 doctor6.specialties.push(specialty9)
 doctor6.specialties.push(specialty10)
@@ -87,6 +93,7 @@ doctor6.specialties.push(specialty10)
 doctor7 = Doctor.create(:username => 'vania',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1985-05-31',
 						:name => 'Vania Fernandes')
 doctor7.specialties.push(specialty11)
 doctor7.specialties.push(specialty12)
@@ -95,6 +102,7 @@ doctor7.specialties.push(specialty12)
 doctor8 = Doctor.create(:username => 'fabio',
 						:password => '123',
 						:password_confirmation => '123',
+            :birthdate => '1986-04-01',
 						:name => 'Fabio Silva')
 doctor8.specialties.push(specialty13)
 doctor8.specialties.push(specialty14)
