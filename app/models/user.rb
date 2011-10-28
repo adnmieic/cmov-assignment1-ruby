@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo,
                     :styles => { :medium => "300x300>", :thumb => "64x64" },
-                    :path => "/:attachment/:id/:style/:filename",
+                    :path => ":attachment/:id/:style/:filename",
                     :url => "http://nfsilva.com/adnmieic/:attachment/:id/:style/:filename",
                     :storage => :ftp,
                     :ftp_credentials => { :host => 'ftp.nfsilva.com', :username => 'adnmieic@nfsilva.com', :password => 'mieicadn' },
