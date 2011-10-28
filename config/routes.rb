@@ -4,6 +4,8 @@ CmovAssignment1Ruby::Application.routes.draw do
   match 'me' => 'users#current'
 
   resources :users
+  
+  match 'appointments/freeslots/:year/:month/:day' => 'appointments#freeslots', :defaults => { :format => 'json' }
   resources :appointments
 
   resources :doctors do
