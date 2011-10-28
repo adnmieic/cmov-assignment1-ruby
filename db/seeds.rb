@@ -114,7 +114,7 @@ patient1 = Patient.create(:username => 'samuel',
 						:password_confirmation => '123',
 						:name => 'Samuel Guerra',
             :birthdate => '2001-03-06',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => true)
 
 patient2 = Patient.create(:username => 'carla',
@@ -122,7 +122,7 @@ patient2 = Patient.create(:username => 'carla',
 						:password_confirmation => '123',
 						:name => 'Carla Morena',
             :birthdate => '1989-02-06',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => false)
 
 patient3 = Patient.create(:username => 'ines',
@@ -130,7 +130,7 @@ patient3 = Patient.create(:username => 'ines',
 						:password_confirmation => '123',
 						:name => 'Ines Torrado',
             :birthdate => '1970-03-24',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => false)
 
 patient4 = Patient.create(:username => 'gabriel',
@@ -138,7 +138,7 @@ patient4 = Patient.create(:username => 'gabriel',
 						:password_confirmation => '123',
 						:name => 'Gabriel Torga',
             :birthdate => '1960-08-14',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => true)
 
 patient5 = Patient.create(:username => 'antonio',
@@ -146,7 +146,7 @@ patient5 = Patient.create(:username => 'antonio',
 						:password_confirmation => '123',
 						:name => 'Antonio Pereira',
             :birthdate => '1974-08-13',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => true)
 
 patient6 = Patient.create(:username => 'fernanda',
@@ -154,7 +154,7 @@ patient6 = Patient.create(:username => 'fernanda',
 						:password_confirmation => '123',
 						:name => 'Fernanda Rosario',
             :birthdate => '1980-09-06',
-            :address => 'Av. de França 352\n4050-276 Porto\nPortugal',
+            :address => "Av. de França 352\n4050-276 Porto\nPortugal",
 						:male => false)
 
 schedule_plan1 = SchedulePlan.new
