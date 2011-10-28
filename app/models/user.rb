@@ -1,4 +1,5 @@
 require "digest/sha2"
+require 'paperclipftp.rb'
 
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
@@ -6,7 +7,16 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :if => :perform_password_validation?
   validates_presence_of :username
   validates_uniqueness_of :username
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "64x64" }
+
+  has_attached_file :photo,
+                    :styles => { :medium => "300x300>", :thumb => "64x64" },
+                    :path => "/:attachment/:id/:style/:filename",
+                    :url => "http://nfsilva.com/adnmieic/:attachment/:id/:style/:filename",
+                    :storage => :ftp,
+                    :ftp_credentials => { :host => 'ftp.nfsilva.com', :username => 'adnmieic@nfsilva.com', :password => 'mieicadn' },
+                    :ftp_debug_mode => false,
+                    :ftp_passive_mode => false,
+                    :ftp_timeout => 30
 
   before_save :hash_password
 

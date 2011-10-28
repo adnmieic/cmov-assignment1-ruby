@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails'
-gem "paperclip", "~> 2.4"
+gem 'paperclip', '~> 2.4'
+#gem "paperclipftp"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
