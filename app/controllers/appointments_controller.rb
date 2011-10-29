@@ -87,17 +87,8 @@ class AppointmentsController < ApplicationController
     Time.new(2000, 1, 1, d.hour, d.min, d.sec)
   end
 
-  # GET /appointments/freeslots/2011/10/28
-  def freeslots
-    date = Date::civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-    schedule_plan = SchedulePlan.find(:first, :conditions => ['start <= ? AND (end IS NULL OR end >= ?)', date, date])
-
-    res = []
-
-    if schedule_plan
-      appointments = Appointment.find(:all, :conditions => ['DATE(date) = ?', date])
-      schedules = Schedule.find(:all, :conditions => ['schedule_plan_id = ? AND weekday = ?', schedule_plan.id, date.wday-1])
-
+  def getFreeSlots(appointments, schedules)
+      res = []
       aps = []
 
       appointments.each do |appointment|
@@ -138,7 +129,66 @@ class AppointmentsController < ApplicationController
           end
         end
       end
+      res
+  end
 
+  def getNextAvailableSlots(doctor_id)
+    date = Date::today
+
+    res = { :date => nil, :slots => nil }
+
+    schedule_plans = SchedulePlan.order(:start).find(:all, :conditions => ['start <= ? AND doctor_id = ?', date, doctor_id])
+
+    schedule_plans.each do |schedule_plan|
+      all_schedules = Schedule.find(:all, :conditions => ['schedule_plan_id = ?', schedule_plan.id])
+
+      done = false
+
+      if schedule_plan.start > date
+        date = schedule_plan.start
+      end
+
+      while not done
+        appointments = Appointment.find(:all, :conditions => ['DATE(date) = ?', date])
+        schedules = all_schedules.find_all do |schedule|
+          schedule.weekday == date.wday - 1
+        end
+
+        freeslots = getFreeSlots(appointments, schedules)
+
+        if freeslots.length > 0
+          done = true
+          res = { :date => date, :slots => freeslots }
+        else
+          date = date.next
+          if date > schedule_plan.end
+            done = true
+          end
+        end
+      end
+
+      break if res[:date]
+    end
+
+    res
+  end
+
+  # GET /appointments/freeslots/2011/10/28
+  def freeslots
+    res = []
+
+    unless params[:year] and params[:month] and params[:day]
+      res = getNextAvailableSlots(params[:doctor])
+    else
+      date = Date::civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+      schedule_plan = SchedulePlan.find(:first, :conditions => ['start <= ? AND (end IS NULL OR end >= ?) AND doctor_id = ?', date, date, params[:doctor]])
+
+      if schedule_plan
+        appointments = Appointment.find(:all, :conditions => ['DATE(date) = ?', date])
+        schedules = Schedule.find(:all, :conditions => ['schedule_plan_id = ? AND weekday = ?', schedule_plan.id, date.wday-1])
+
+        res = getFreeSlots(appointments, schedules)
+      end
     end
 
     respond_to do |format|
