@@ -84,7 +84,7 @@ class AppointmentsController < ApplicationController
   end
 
   def extract_time(d)
-    Time.new(2000, 1, 1, d.hour, d.min, d.sec)
+    Time.new(2000, 1, 1, d.hour, d.min, d.sec, "-00:00")
   end
 
   def getFreeSlots(appointments, schedules)
