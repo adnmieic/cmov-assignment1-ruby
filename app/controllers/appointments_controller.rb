@@ -173,7 +173,8 @@ class AppointmentsController < ApplicationController
     res
   end
 
-  # GET /appointments/freeslots/2011/10/28
+  # GET /appointments/freeslots/2/
+  # GET /appointments/freeslots/2/2011/10/28
   def freeslots
     res = []
 
@@ -181,7 +182,7 @@ class AppointmentsController < ApplicationController
       res = getNextAvailableSlots(params[:doctor])
     else
       date = Date::civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-      schedule_plan = SchedulePlan.find(:first, :conditions => ['start <= ? AND (end IS NULL OR end >= ?) AND doctor_id = ?', date, date, params[:doctor]])
+      schedule_plan = SchedulePlan.find(:first, :conditions => ['start <= ? AND (schedule_plans.end IS NULL OR schedule_plans.end >= ?) AND doctor_id = ?', date, date, params[:doctor]])
 
       if schedule_plan
         appointments = Appointment.find(:all, :conditions => ['DATE(date) = ?', date])
