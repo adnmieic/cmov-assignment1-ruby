@@ -20,7 +20,7 @@ class SchedulePlan < ActiveRecord::Base
   end
 
   def correct_other_plans
-    schedule_plans = SchedulePlan.find(:all, :conditions => ["doctor_id = ? AND id <> ? AND (end IS NULL OR DATE(end) >= ?)", self.doctor_id, self.id, self.start])
+    schedule_plans = SchedulePlan.find(:all, :conditions => ["doctor_id = ? AND id <> ? AND (schedule_plans.end IS NULL OR DATE(schedule_plans.end) >= ?)", self.doctor_id, self.id, self.start])
     
     logger.debug schedule_plans.inspect
 
