@@ -2,7 +2,13 @@ class SchedulePlan < ActiveRecord::Base
   belongs_to :doctor
   has_many :schedules
   before_create :check_for_appointments
-  after_save :correct_other_plans
+  after_save :correct_other_plans, :unless => :skip_callbacks
+
+  @@skipcallbacks = false
+
+  def skip_callbacks
+    return @@skipcallbacks
+  end
 
   def check_for_appointments
     appointment = Appointment.find(:first, :conditions => ["DATE(date) >= ? AND doctor_id = ?", self.start, self.doctor_id])
@@ -20,15 +26,17 @@ class SchedulePlan < ActiveRecord::Base
   end
 
   def correct_other_plans
+    logger.debug "correct_other_plans for id" + self.id.to_s
     schedule_plans = SchedulePlan.find(:all, :conditions => ["doctor_id = ? AND id <> ? AND (schedule_plans.end IS NULL OR DATE(schedule_plans.end) >= ?)", self.doctor_id, self.id, self.start])
-    
-    logger.debug schedule_plans.inspect
+
+    @@skipcallbacks = true
 
     schedule_plans.each do |schedule_plan|
-      logger.debug self.start.yesterday.inspect
       schedule_plan.end = self.start.yesterday;
       schedule_plan.save
     end
+
+    @@skipcallbacks = false
   end
 
   def as_json(options = {})
