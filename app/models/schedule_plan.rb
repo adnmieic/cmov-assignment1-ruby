@@ -12,7 +12,7 @@ class SchedulePlan < ActiveRecord::Base
       return false
     end
 
-    if self.end < self.start
+    if self.end && self.end < self.start
       self.errors.add(:end, "End date cannot be before start date!")
       return false
     end
