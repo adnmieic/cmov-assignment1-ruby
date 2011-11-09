@@ -26,7 +26,6 @@ class SchedulePlan < ActiveRecord::Base
   end
 
   def correct_other_plans
-    logger.debug "correct_other_plans for id" + self.id.to_s
     schedule_plans = SchedulePlan.find(:all, :conditions => ["doctor_id = ? AND id <> ? AND (schedule_plans.end IS NULL OR DATE(schedule_plans.end) >= ?)", self.doctor_id, self.id, self.start])
 
     @@skipcallbacks = true
